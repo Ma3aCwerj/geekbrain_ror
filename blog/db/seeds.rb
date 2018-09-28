@@ -14,4 +14,4 @@ firstPost = Post.create( title: 'First post', body: 'This is first post in blog'
 
 Comment.create( body: 'hi', user: ivan, post: firstPost)
 
-Mark.create( user: petr, post: firstPost, mark: 5, is_active: true)
+Mark.create( user: petr, post: firstPost, grade: 5)
