@@ -1,17 +1,28 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+##
+# Clear DB
 
-ivan = User.create( name: 'Ivan', email: 'ivan@dot.com')
-petr = User.create( name: 'Petr', email: 'petr@dot.com', moderator: true)
-sidor = User.create( name: 'Sidor', email: 'sidor@dot.com', creator: true)
+users_h = 10.times.map do{
+  name: FFaker::Internet.user_name[0..25],
+  email: FFaker::Internet.safe_email
+}
+end
+users = User.create! users_h
+users.first(4).each { |u| u.update creator: true}
+users.first(2).each { |u| u.update moderator: true}
 
-firstPost = Post.create( title: 'First post', body: 'This is first post in blog', user: sidor)
+creators = User.where(creator: true)
+posts_h = 25.times.map do {
+  title: FFaker::HipsterIpsum.paragraph,
+  body: FFaker::HipsterIpsum.paragraphs,
+  user: creators.sample
+}
+end
+posts = Post.create! posts_h
 
-Comment.create( body: 'hi', user: ivan, post: firstPost)
-
-Mark.create( user: petr, post: firstPost, grade: 5)
+comments_h = 250.times.map do {
+  body: FFaker::HipsterIpsum.paragraphs,
+  user: users.sample,
+  post: posts.sample
+}
+end
+Comment.create! comments_h

@@ -30,11 +30,10 @@ ActiveRecord::Schema.define(version: 2018_09_27_162139) do
     t.bigint "user_id"
     t.bigint "post_id"
     t.integer "grade"
-    t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_marks_on_post_id", unique: true
-    t.index ["user_id"], name: "index_marks_on_user_id", unique: true
+    t.index ["post_id"], name: "index_marks_on_post_id"
+    t.index ["user_id"], name: "index_marks_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
