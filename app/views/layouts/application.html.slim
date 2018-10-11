@@ -16,4 +16,6 @@ html
           li.nav-item
             = link_to 'Пользователи', users_path, class: 'nav-link'
     .container.main
+      p.notice = notice
+      p.alert = alert
       = yield
