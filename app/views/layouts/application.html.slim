@@ -17,7 +17,7 @@ html
             = link_to 'Пользователи', users_path, class: 'nav-link'
           -if user_signed_in?
             li
-              = link_to t('label.hello') % current_user.name, edit_user_registration_path, class: 'nav-link'
+              = link_to t('label.hello') % current_user.name || current_user.email, edit_user_registration_path, class: 'nav-link'
             li
               = link_to t('label.log_out'), destroy_user_session_path, method: :delete, class: 'nav-link'
           -else
@@ -27,6 +27,6 @@ html
               = link_to 'Register', new_user_registration_path, class: 'nav-link'
 
     .container.main
-      / p.notice = notice
-      / p.alert = alert
+      p.notice = notice
+      p.alert = alert
       = yield
