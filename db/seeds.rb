@@ -1,9 +1,12 @@
 ##
 # Clear DB
 
-users_h = 10.times.map do{
+users_h = 10.times.map do 
+  email = FFaker::Internet.safe_email 
+  {
   name: FFaker::Internet.user_name[0..25],
-  email: FFaker::Internet.safe_email
+  email: email,
+  password: email
 }
 end
 users = User.create! users_h
