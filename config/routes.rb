@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'posts#index'
-  # resources :users
+  devise_for :users
   resources :posts, only: [:index, :show]
 
   namespace :creator do
