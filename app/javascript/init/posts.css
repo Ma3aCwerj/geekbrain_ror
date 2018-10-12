@@ -1,0 +1,18 @@
+article.post {
+  margin-bottom: 1em;
+  padding: 1em 0;
+  border-bottom: 1px solid lightblue;
+}
+
+article.post h2 {
+  margin-bottom: 0;
+}
+
+article.post section.post-body {
+  padding: 0.5em 0;
+}
+
+.hidden-print{
+  display: none
+}
+  
