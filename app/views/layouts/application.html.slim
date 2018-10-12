@@ -15,7 +15,18 @@ html
             = link_to 'Статьи', root_path, class: 'nav-link'
           li.nav-item
             = link_to 'Пользователи', users_path, class: 'nav-link'
+          -if user_signed_in?
+            li
+              = link_to t('label.hello') % current_user.name, edit_user_registration_path, class: 'nav-link'
+            li
+              = link_to t('label.log_out'), destroy_user_session_path, method: :delete, class: 'nav-link'
+          -else
+            li
+              = link_to t('label.log_in'), new_user_session_path, class: 'nav-link'
+            li
+              = link_to 'Register', new_user_registration_path, class: 'nav-link'
+
     .container.main
-      p.notice = notice
-      p.alert = alert
+      / p.notice = notice
+      / p.alert = alert
       = yield
