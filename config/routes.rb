@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   root 'posts#index'
-<<<<<<< HEAD
   devise_for :users
-=======
-  # resources :users
->>>>>>> git/users
   resources :posts, only: [:index, :show]
 
   namespace :creator do
