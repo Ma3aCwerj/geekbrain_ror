@@ -1,4 +1,6 @@
-class UsersController < ApplicationController
+class Moderator::UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :check_moderator
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -70,5 +72,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :email, :moderator, :creator, :banned)
+    end
+
+    def check_moderator
+      redirect_to root_path, alert: 'У Вас нет прав для данного действия.' unless current_user.moderator?
     end
 end
