@@ -3,4 +3,4 @@ h5.post-h1 Список всех статей
   = link_to 'New Post', new_creator_post_path, class: 'btn btn-outline-primary'
 = render partial: 'post', collection: @posts
 br
-= will_paginate @posts, renderer: 'BootstrapPaginationHelper::LinkRenderer'
+= paginate @posts
