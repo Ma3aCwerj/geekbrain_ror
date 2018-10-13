@@ -21,4 +21,4 @@ article.comments
       p Можно будет коментировать(пока не реализовано)
     = render partial: 'comments', collection: @comments
     br
-    = will_paginate @comments, renderer: 'BootstrapPaginationHelper::LinkRenderer'
+    = paginate @comments
